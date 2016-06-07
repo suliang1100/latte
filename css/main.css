@@ -910,7 +910,7 @@ pre .javascript .function {
   line-height: 36px;
   font-size: 24px;
   font-weight: normal;
-  font-family: 'Georgia, sans', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Segoe Script', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1549,7 +1549,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #cfffff;
+  background: #5bff4a;
 }
 .links-of-blogroll {
   font-size: 13px;
