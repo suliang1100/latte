@@ -50,7 +50,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[css规范]]></title>
+      <title><![CDATA[CSS规范]]></title>
       <url>http://latte-time.com/2016/05/24/hello-world/</url>
       <content type="html"><![CDATA[<p>和谐而论，编写组件前请认真研读此规范，然后再开始编码！</p>
 <h2 id="组织规范"><a href="#组织规范" class="headerlink" title="组织规范"></a>组织规范</h2><p>FrozenUI 的模块组织方式分为四个部分：</p>
