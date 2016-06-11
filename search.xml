@@ -3,6 +3,346 @@
   
   
     
+    <entry>
+      <title><![CDATA[2016]]></title>
+      <url>http://latte-time.com/2016/05/25/2016/</url>
+      <content type="html"><![CDATA[<p>飞雪连天射白鹿，笑书神侠倚碧鸳。</p>
+<a id="more"></a>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JSON]]></title>
+      <url>http://latte-time.com/2016/05/25/JSON/</url>
+      <content type="html"><![CDATA[<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>在<strong>JSON</strong>没出现之前，我们在服务器和服务器之间通信使用的<strong>XML</strong>，但是XML结构冗余，解析困难，需要使用<strong>DOM</strong>操作的方式来进行解析，如下所示：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br><span class="line">//..省略其他ajax步骤</span><br><span class="line">var xml = xhr.responseXML;</span><br><span class="line">//假如XML结构是下面这样的</span><br><span class="line">&lt;member&gt;</span><br><span class="line">	&lt;name&gt;suliang&lt;/name&gt;</span><br><span class="line">	&lt;age&gt;25&lt;/age&gt;</span><br><span class="line">&lt;/member&gt;</span><br><span class="line">console.log(xml.getElementsByTagName("name")[0].firstChild.nodeValue);  //suliang</span><br></pre></td></tr></table></figure></p>
+<p>从<code>XMLHttpRequest</code>对象的名字就可以得出它最早是以<code>XML</code>的形式进行数据响应的。<br><code>JSON</code>的出现很好的解决了<code>XML</code>的这两个缺点。<code>JSON</code>是<code>JavaScript</code>的一个严格子集，利用了<code>JavaScript</code>中的一些模式来表示结构化数据。关于<code>JSON</code>，最重要的是要理解它是一种数据格式，不是一种编程语言。虽然具有相同的语法形式，但是<code>JSON</code>并不从属于<code>JavaScript</code>，而且，并不是只有<code>JavaScript</code>才使用<code>JSON</code>，很多编程语言都有<code>JSON</code>的解析器和序列化器。从<code>JSON</code>官网上可以查找到各个编程语言对<code>JSON</code>的实现，<a href="http://www.json.org/" target="_blank" rel="external">点这里</a></p>
+<a id="more"></a>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><p><code>JSON</code>的语法可以表示以下几种类型的值</p>
+<blockquote>
+<ol>
+<li><strong>简单值</strong></li>
+<li><strong>对象</strong></li>
+<li><strong>数组</strong></li>
+</ol>
+</blockquote>
+<p>注：<code>JSON</code>不支持<code>变量</code> <code>函数</code> <code>对象实例</code>等数据类型。</p>
+<h5 id="简单值"><a href="#简单值" class="headerlink" title="简单值"></a>简单值</h5><p>最简单的<code>JSON</code>数据形式就是简单值，例如下面这些值就是有效的<code>JSON</code>数据<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>  <span class="comment">//数值</span></span><br><span class="line"><span class="string">"suliang"</span>  <span class="comment">//字符串，必须双引号，单引号报错</span></span><br><span class="line"><span class="literal">true</span>  <span class="comment">//布尔值也是合法的，不过JSON更多用来表示更复杂的数据结构</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h5><p><code>JSON</code>中的对象字面量和<code>JavaScript</code>中的对象有些不同，例如下面是一个标准的<code>JavaScript</code>对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name:<span class="string">"suliang"</span>,</span><br><span class="line">	age:<span class="number">25</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>如果使用<code>JSON</code>对象字面量来表示上面的对象要写成下面这样：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"name"</span>:<span class="string">"suliang"</span>,</span><br><span class="line">	<span class="attr">"age"</span>:<span class="number">25</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>属性名一定要严格使用双引号来包起来，哪怕使用单引号都会报错。所以为了统一，我们在定义<code>JavaScript</code>对象的时候就其实可以像下面这样定义：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	<span class="string">"name"</span>:<span class="string">"suliang"</span>,</span><br><span class="line">	<span class="string">"age"</span>:<span class="number">25</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>另外<code>JSON</code>字符串不是<code>JavaScript</code>语句，所以末尾不能加<code>;</code><br><code>JSON</code>的属性值可以是简单类型值也可以是复杂类型值，也就是说可以 可以将一个对象赋值给一个属性。同样需要注意的是对象中的属性名必须用双引号包起来，如下所示：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"number"</span>:<span class="number">25</span>,</span><br><span class="line">	<span class="attr">"personal"</span>:&#123;</span><br><span class="line">		<span class="attr">"name"</span>:<span class="string">"suliang"</span>,</span><br><span class="line">		<span class="attr">"job"</span>:<span class="string">"软件工程师"</span>,</span><br><span class="line">		<span class="attr">"location"</span>:<span class="string">"杭州-浙江"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><p>在<code>JSON</code>中同样可以使用<code>JavaScript</code>中的数组字面量形式，例如<code>JavaScript</code>数组字面量是这样的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">"suliang"</span>,<span class="number">25</span>,<span class="literal">true</span>];</span><br></pre></td></tr></table></figure></p>
+<p>在<code>JSON</code>中我们可以使用同样的语法表示一个数组：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">"suliang"</span>,<span class="number">25</span>,<span class="literal">true</span>]</span><br></pre></td></tr></table></figure></p>
+<p>将数组和对象结合起来可以构成更复杂的数据集合，如下：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"nember"</span>:<span class="number">25</span>,</span><br><span class="line">	<span class="attr">"personal"</span>:&#123;</span><br><span class="line">		<span class="attr">"name"</span>:<span class="string">"suliang"</span>,</span><br><span class="line">		<span class="attr">"age"</span>:<span class="number">25</span>,</span><br><span class="line">		<span class="attr">"flag"</span>:[<span class="string">"HTML"</span>,<span class="string">"CSS"</span>,<span class="string">"JavaScript"</span>]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以借助一些现成的工具来校验自己写的<code>JSON</code>是不是合法，同样还可以格式化<code>JSON</code>，<a href="http://json.cn/" target="_blank" rel="external">点这里</a></p>
+<h4 id="解析与序列化"><a href="#解析与序列化" class="headerlink" title="解析与序列化"></a>解析与序列化</h4><p>由于<code>JSON</code>拥有和<code>JavaScript</code>类似的语法，所以我们在将<code>JSON</code>转换成<code>JavaScript</code>对象之后可以使用访问对象的方式对其进行访问。例如上面那个<code>JSON</code>例子我们可以按照下面的方式来获取”JavaScript”这个字符串：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person.personal.flag[<span class="number">2</span>]</span><br></pre></td></tr></table></figure></p>
+<p>相比文章开头的需要获取<code>XML</code>的<code>DOM</code>结构方式要来得简单得多。</p>
+<h5 id="JSON对象"><a href="#JSON对象" class="headerlink" title="JSON对象"></a>JSON对象</h5><p>早期我们在解析<code>JSON</code>的时候使用的是<code>evel()</code>函数，但是使用该函数会存在一定的风险，所以现在早已弃之不用了。<strong>ECMAScript 5</strong>定义了全局对象<code>JSON</code>来解析<code>JSON</code>，对现代浏览器支持比较好，但是对IE浏览器而言只支持<code>IE8+</code>。<br><code>JSON</code>对象有如下两个方法：</p>
+<blockquote>
+<p><code>stringify()</code>    将<code>JavaScript</code>对象序列化成<code>JSON</code>字符串<br><code>parse()</code>    将<code>JSON</code>字符串解析成<code>JavaScript</code>对象</p>
+</blockquote>
+<p>如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="string">"nember"</span>:<span class="number">25</span>,</span><br><span class="line">    <span class="string">"personal"</span>:&#123;</span><br><span class="line">        <span class="string">"name"</span>:<span class="string">"suliang"</span>,</span><br><span class="line">        <span class="string">"age"</span>:<span class="number">25</span>,</span><br><span class="line">        <span class="string">"flag"</span>:[<span class="string">"HTML"</span>,<span class="string">"CSS"</span>,<span class="string">"JavaScript"</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> objStr = <span class="built_in">JSON</span>.stringify(obj);</span><br><span class="line"><span class="built_in">console</span>.log(objStr);</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的一点是，使用<code>stringify</code>方法序列化的<code>JSON</code>字符串不包含任何形式的缩进和空格。另外，对象中的所有函数和原型成员都会被忽略。</p>
+<p>与序列化相反的是将一个<code>JSON</code>字符串解析成<code>JavaScript</code>对象，如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> objstr = <span class="string">'&#123;"nember":25,"personal":&#123;"name":"suliang","age":25,"flag":["HTML","CSS","JavaScript"]&#125;&#125;'</span>;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="built_in">JSON</span>.parse(objstr);</span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br></pre></td></tr></table></figure></p>
+<p>如果传给<code>JSON.parse()</code>的不是一个有效的<code>JSON</code>字符串的话就会抛出一个语法错误</p>
+<p>在不支持<code>JSON</code>对象的浏览器中我们可以在上面给出的<code>JSON</code>官网中下载<code>json2.js</code>文件并引入项目，这样就可以顺利使用<code>JSON</code>对象来进行序列化和解析了。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[CSS规范]]></title>
+      <url>http://latte-time.com/2016/05/24/hello-world/</url>
+      <content type="html"><![CDATA[<p>和谐而论，编写组件前请认真研读此规范，然后再开始编码！</p>
+<h2 id="组织规范"><a href="#组织规范" class="headerlink" title="组织规范"></a>组织规范</h2><p>FrozenUI 的模块组织方式分为四个部分：</p>
+<p>base（reset + type + animation + icon + mixin + variable）</p>
+<p>util（arrowlink + border + grid + layout）</p>
+<p>component（UI组件，包括css组件和js插件中使用的）</p>
+<p>vip（业务组件）</p>
+<p>可以参考下面的规范在此基础上扩展出自己的业务组件。</p>
+<a id="more"></a>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>统一使用ui为前缀作为命名空间。</p>
+<p>class 名称中只能出现小写字符和破折号（dashe）（不是下划线，也不是驼峰命名法）。破折号应当用于相关 class 的命名（类似于命名空间）（例如<code>.ui-btn</code> 和 <code>.ui-btn-danger</code>）。</p>
+<p>避免过度任意的简写。<code>.btn</code> 代表 <code>button</code>，但是 <code>.b</code> 不能表达任何意思。</p>
+<p>class 名称应当尽可能短，并且意义明确，不要使用表现形式（presentational）的名称。</p>
+<p>基于最近的父 class 或基本（base） class 作为新 class 的前缀。</p>
+<p>模块名如果是两个单词组合使用简单<em>连写</em>的方式，如ui-tooltips而不是ui-tool-tips。</p>
+<p><code>.ui-btn-lg.disabled</code></p>
+<p>{命名空间}-{模块}-{属性}.{状态}</p>
+<p><code>.ui-dialog-cnt</code> </p>
+<p>{命名空间}-{模块}-{子模块}</p>
+<p>描述属性的class应该基于当前的class，层级不超过<em>3级</em></p>
+<p><code>.ui-form-item ui-form-item-link</code></p>
+<p>{命名空间}-{模块}-{属性}.{状态}</p>
+<p><em>除了常用状态的class，不能直接使用其他不带前缀的class</em>，如</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-btn primary"</span>&gt;</span>确认<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>应该写为</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-btn ui-btn-primary"</span>&gt;</span>确认<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>不强制所有class都必须带父class，简单的组件可以直接使用子class，如</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"ui-txt-highlight"</span>&gt;</span>ui-txt-highlight<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>而不是</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"ui-txt ui-txt-highlight"</span>&gt;</span>ui-txt-highlight<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>因为是在移动端使用，dom结构并不会太复杂，因此不建议过多使用class嵌套，可以直接使用标签名的直接使用标签名。<br>如建议使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ui-list"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>而不使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ui-list"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"ui-list-item"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"ui-list-item"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"ui-list-item"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="状态类："><a href="#状态类：" class="headerlink" title="状态类："></a>状态类：</h4><table>
+<thead>
+<tr>
+<th>单词</th>
+<th style="text-align:center">意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>show</td>
+<td style="text-align:center">显示</td>
+</tr>
+<tr>
+<td>hide</td>
+<td style="text-align:center">隐藏</td>
+</tr>
+<tr>
+<td>current</td>
+<td style="text-align:center">当前状态</td>
+</tr>
+<tr>
+<td>active</td>
+<td style="text-align:center">激活态</td>
+</tr>
+<tr>
+<td>checked</td>
+<td style="text-align:center">选中态</td>
+</tr>
+<tr>
+<td>selected</td>
+<td style="text-align:center">已选中状态</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td style="text-align:center">失效状态</td>
+</tr>
+<tr>
+<td>done</td>
+<td style="text-align:center">完成状态</td>
+</tr>
+<tr>
+<td>focus</td>
+<td style="text-align:center">聚集状态</td>
+</tr>
+<tr>
+<td>blur</td>
+<td style="text-align:center">失去焦点状态</td>
+</tr>
+</tbody>
+</table>
+<h4 id="约定的一些简写："><a href="#约定的一些简写：" class="headerlink" title="约定的一些简写："></a>约定的一些简写：</h4><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th style="text-align:center">原单词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-s</td>
+<td style="text-align:center">small</td>
+</tr>
+<tr>
+<td>-lg</td>
+<td style="text-align:center">large</td>
+</tr>
+<tr>
+<td>-l</td>
+<td style="text-align:center">left</td>
+</tr>
+<tr>
+<td>-r</td>
+<td style="text-align:center">right</td>
+</tr>
+<tr>
+<td>-t</td>
+<td style="text-align:center">top</td>
+</tr>
+<tr>
+<td>-b</td>
+<td style="text-align:center">bottom</td>
+</tr>
+<tr>
+<td>-thumb</td>
+<td style="text-align:center">thumbnail</td>
+</tr>
+<tr>
+<td>-img</td>
+<td style="text-align:center">images</td>
+</tr>
+<tr>
+<td>-nav</td>
+<td style="text-align:center">navigation</td>
+</tr>
+<tr>
+<td>-cnt</td>
+<td style="text-align:center">content</td>
+</tr>
+<tr>
+<td>-hd</td>
+<td style="text-align:center">header</td>
+</tr>
+<tr>
+<td>-bd</td>
+<td style="text-align:center">body</td>
+</tr>
+<tr>
+<td>-ft</td>
+<td style="text-align:center">footer</td>
+</tr>
+<tr>
+<td>-txt</td>
+<td style="text-align:center">text</td>
+</tr>
+<tr>
+<td>-btn</td>
+<td style="text-align:center">button</td>
+</tr>
+<tr>
+<td>-multi</td>
+<td style="text-align:center">多个</td>
+</tr>
+<tr>
+<td>-info</td>
+<td style="text-align:center">信息内容</td>
+</tr>
+</tbody>
+</table>
+<h4 id="一些常用的属性或模块："><a href="#一些常用的属性或模块：" class="headerlink" title="一些常用的属性或模块："></a>一些常用的属性或模块：</h4><table>
+<thead>
+<tr>
+<th>单词</th>
+<th style="text-align:center">意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-wrap</td>
+<td style="text-align:center">外层</td>
+</tr>
+<tr>
+<td>-default</td>
+<td style="text-align:center">默认样式</td>
+</tr>
+<tr>
+<td>-pure</td>
+<td style="text-align:center">简版</td>
+</tr>
+<tr>
+<td>-stable</td>
+<td style="text-align:center">稳的，用于灰色背景</td>
+</tr>
+<tr>
+<td>-border/-outline</td>
+<td style="text-align:center">带边框的</td>
+</tr>
+<tr>
+<td>-halve</td>
+<td style="text-align:center">两等分</td>
+</tr>
+<tr>
+<td>-trisect</td>
+<td style="text-align:center">三等分</td>
+</tr>
+<tr>
+<td>-cover</td>
+<td style="text-align:center">通栏</td>
+</tr>
+<tr>
+<td>-tiled</td>
+<td style="text-align:center">平铺</td>
+</tr>
+<tr>
+<td>-vertical</td>
+<td style="text-align:center">垂直</td>
+</tr>
+<tr>
+<td>-horizontal</td>
+<td style="text-align:center">横向</td>
+</tr>
+<tr>
+<td>-divider</td>
+<td style="text-align:center">分割</td>
+</tr>
+<tr>
+<td>-muted</td>
+<td style="text-align:center">弱的</td>
+</tr>
+<tr>
+<td>-group</td>
+<td style="text-align:center">组的</td>
+</tr>
+<tr>
+<td>-halve</td>
+<td style="text-align:center">2等分</td>
+</tr>
+<tr>
+<td>-trisect</td>
+<td style="text-align:center">3等分</td>
+</tr>
+<tr>
+<td>-info</td>
+<td style="text-align:center">信息</td>
+</tr>
+<tr>
+<td>-news</td>
+<td style="text-align:center">消息</td>
+</tr>
+<tr>
+<td>-success</td>
+<td style="text-align:center">成功的</td>
+</tr>
+<tr>
+<td>-warn</td>
+<td style="text-align:center">警告的</td>
+</tr>
+<tr>
+<td>-highlight</td>
+<td style="text-align:center">高亮的</td>
+</tr>
+<tr>
+<td>-item</td>
+<td style="text-align:center">子元素</td>
+</tr>
+<tr>
+<td>-title</td>
+<td style="text-align:center">标题</td>
+</tr>
+<tr>
+<td>-subtitle</td>
+<td style="text-align:center">小标题</td>
+</tr>
+<tr>
+<td>-state</td>
+<td style="text-align:center">状态</td>
+</tr>
+<tr>
+<td>-guide</td>
+<td style="text-align:center">引导性</td>
+</tr>
+<tr>
+<td>-link</td>
+<td style="text-align:center">链接</td>
+</tr>
+<tr>
+<td>-bar</td>
+<td style="text-align:center">横块</td>
+</tr>
+</tbody>
+</table>
+<p>只要词义表达了组件要实现的功能或者要表现出来的的外观就可以了。</p>
+<p>例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-tooltips ui-tooltips-warn"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-tooltips-cnt ui-tooltips-cnt-link"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>当前网路不可用，请检查你的网路设置。</span><br><span class="line">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="SASS编写"><a href="#SASS编写" class="headerlink" title="SASS编写"></a>SASS编写</h2><p>避免不必要的嵌套。只有在需要给父元素增加样式并且同时存在多个子元素时才需要考虑嵌套。</p>
+<p>字体颜色，字体大小，行高，border颜色，背景颜色等基本属性作为变量，并mixin常用代码段。</p>
+<h2 id="CSS编码规范"><a href="#CSS编码规范" class="headerlink" title="CSS编码规范"></a>CSS编码规范</h2><p>参考<a href="http://alloyteam.github.io/code-guide/#css" target="_blank" rel="external">http://alloyteam.github.io/code-guide/#css</a></p>
+]]></content>
+    </entry>
+    
   
   
 </search>
