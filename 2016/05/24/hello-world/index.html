@@ -92,7 +92,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="CSS规范," />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -108,34 +108,40 @@
 
 
 
-<meta name="description" content="和谐而论，编写组件前请认真研读此规范，然后再开始编码！
-组织规范FrozenUI 的模块组织方式分为四个部分：
-base（reset + type + animation + icon + mixin + variable）
-util（arrowlink + border + grid + layout）
-component（UI组件，包括css组件和js插件中使用的）
-vip（业务组件）
-可以参">
+<meta name="description" content="再来梳理一遍一个基本的Ajax流程：
+
+创建兼容的XHR对象 → 初始化请求 → 发送请求 → 接收数据
+
+我们在封装整个Ajax过程的时候需要知道以下几个内容
+
+传输的方式是GET还是POST服务器接收请求的URL是什么需要向服务器传输什么数据接收到服务器返回的数据之后怎么进行回调处理
+
+这些信息我们可以通过参数的形式传递到函数中去，如下所示：123function ajax(method,ur">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS规范">
+<meta property="og:title" content="封装Ajax函数">
 <meta property="og:url" content="http://latte-time.com/2016/05/24/hello-world/index.html">
 <meta property="og:site_name" content="Latte Time">
-<meta property="og:description" content="和谐而论，编写组件前请认真研读此规范，然后再开始编码！
-组织规范FrozenUI 的模块组织方式分为四个部分：
-base（reset + type + animation + icon + mixin + variable）
-util（arrowlink + border + grid + layout）
-component（UI组件，包括css组件和js插件中使用的）
-vip（业务组件）
-可以参">
-<meta property="og:updated_time" content="2016-06-08T03:41:52.638Z">
+<meta property="og:description" content="再来梳理一遍一个基本的Ajax流程：
+
+创建兼容的XHR对象 → 初始化请求 → 发送请求 → 接收数据
+
+我们在封装整个Ajax过程的时候需要知道以下几个内容
+
+传输的方式是GET还是POST服务器接收请求的URL是什么需要向服务器传输什么数据接收到服务器返回的数据之后怎么进行回调处理
+
+这些信息我们可以通过参数的形式传递到函数中去，如下所示：123function ajax(method,ur">
+<meta property="og:updated_time" content="2016-06-11T14:25:18.080Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS规范">
-<meta name="twitter:description" content="和谐而论，编写组件前请认真研读此规范，然后再开始编码！
-组织规范FrozenUI 的模块组织方式分为四个部分：
-base（reset + type + animation + icon + mixin + variable）
-util（arrowlink + border + grid + layout）
-component（UI组件，包括css组件和js插件中使用的）
-vip（业务组件）
-可以参">
+<meta name="twitter:title" content="封装Ajax函数">
+<meta name="twitter:description" content="再来梳理一遍一个基本的Ajax流程：
+
+创建兼容的XHR对象 → 初始化请求 → 发送请求 → 接收数据
+
+我们在封装整个Ajax过程的时候需要知道以下几个内容
+
+传输的方式是GET还是POST服务器接收请求的URL是什么需要向服务器传输什么数据接收到服务器返回的数据之后怎么进行回调处理
+
+这些信息我们可以通过参数的形式传递到函数中去，如下所示：123function ajax(method,ur">
 
 
 
@@ -153,7 +159,7 @@ vip（业务组件）
   };
 </script>
 
-  <title> CSS规范 | Latte Time </title>
+  <title> 封装Ajax函数 | Latte Time </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -306,7 +312,7 @@ vip（业务组件）
             
             
               
-                CSS规范
+                封装Ajax函数
               
             
           </h1>
@@ -353,294 +359,29 @@ vip（业务组件）
       
 
       
-        <p>和谐而论，编写组件前请认真研读此规范，然后再开始编码！</p>
-<h2 id="组织规范"><a href="#组织规范" class="headerlink" title="组织规范"></a>组织规范</h2><p>FrozenUI 的模块组织方式分为四个部分：</p>
-<p>base（reset + type + animation + icon + mixin + variable）</p>
-<p>util（arrowlink + border + grid + layout）</p>
-<p>component（UI组件，包括css组件和js插件中使用的）</p>
-<p>vip（业务组件）</p>
-<p>可以参考下面的规范在此基础上扩展出自己的业务组件。</p>
-<a id="more"></a>
-<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p>统一使用ui为前缀作为命名空间。</p>
-<p>class 名称中只能出现小写字符和破折号（dashe）（不是下划线，也不是驼峰命名法）。破折号应当用于相关 class 的命名（类似于命名空间）（例如<code>.ui-btn</code> 和 <code>.ui-btn-danger</code>）。</p>
-<p>避免过度任意的简写。<code>.btn</code> 代表 <code>button</code>，但是 <code>.b</code> 不能表达任何意思。</p>
-<p>class 名称应当尽可能短，并且意义明确，不要使用表现形式（presentational）的名称。</p>
-<p>基于最近的父 class 或基本（base） class 作为新 class 的前缀。</p>
-<p>模块名如果是两个单词组合使用简单<em>连写</em>的方式，如ui-tooltips而不是ui-tool-tips。</p>
-<p><code>.ui-btn-lg.disabled</code></p>
-<p>{命名空间}-{模块}-{属性}.{状态}</p>
-<p><code>.ui-dialog-cnt</code> </p>
-<p>{命名空间}-{模块}-{子模块}</p>
-<p>描述属性的class应该基于当前的class，层级不超过<em>3级</em></p>
-<p><code>.ui-form-item ui-form-item-link</code></p>
-<p>{命名空间}-{模块}-{属性}.{状态}</p>
-<p><em>除了常用状态的class，不能直接使用其他不带前缀的class</em>，如</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-btn primary"</span>&gt;</span>确认<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>应该写为</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-btn ui-btn-primary"</span>&gt;</span>确认<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>不强制所有class都必须带父class，简单的组件可以直接使用子class，如</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"ui-txt-highlight"</span>&gt;</span>ui-txt-highlight<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>而不是</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"ui-txt ui-txt-highlight"</span>&gt;</span>ui-txt-highlight<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>因为是在移动端使用，dom结构并不会太复杂，因此不建议过多使用class嵌套，可以直接使用标签名的直接使用标签名。<br>如建议使用</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ui-list"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>而不使用</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ui-list"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"ui-list-item"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"ui-list-item"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"ui-list-item"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="状态类："><a href="#状态类：" class="headerlink" title="状态类："></a>状态类：</h4><table>
-<thead>
-<tr>
-<th>单词</th>
-<th style="text-align:center">意思</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>show</td>
-<td style="text-align:center">显示</td>
-</tr>
-<tr>
-<td>hide</td>
-<td style="text-align:center">隐藏</td>
-</tr>
-<tr>
-<td>current</td>
-<td style="text-align:center">当前状态</td>
-</tr>
-<tr>
-<td>active</td>
-<td style="text-align:center">激活态</td>
-</tr>
-<tr>
-<td>checked</td>
-<td style="text-align:center">选中态</td>
-</tr>
-<tr>
-<td>selected</td>
-<td style="text-align:center">已选中状态</td>
-</tr>
-<tr>
-<td>disabled</td>
-<td style="text-align:center">失效状态</td>
-</tr>
-<tr>
-<td>done</td>
-<td style="text-align:center">完成状态</td>
-</tr>
-<tr>
-<td>focus</td>
-<td style="text-align:center">聚集状态</td>
-</tr>
-<tr>
-<td>blur</td>
-<td style="text-align:center">失去焦点状态</td>
-</tr>
-</tbody>
-</table>
-<h4 id="约定的一些简写："><a href="#约定的一些简写：" class="headerlink" title="约定的一些简写："></a>约定的一些简写：</h4><table>
-<thead>
-<tr>
-<th>缩写</th>
-<th style="text-align:center">原单词</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-s</td>
-<td style="text-align:center">small</td>
-</tr>
-<tr>
-<td>-lg</td>
-<td style="text-align:center">large</td>
-</tr>
-<tr>
-<td>-l</td>
-<td style="text-align:center">left</td>
-</tr>
-<tr>
-<td>-r</td>
-<td style="text-align:center">right</td>
-</tr>
-<tr>
-<td>-t</td>
-<td style="text-align:center">top</td>
-</tr>
-<tr>
-<td>-b</td>
-<td style="text-align:center">bottom</td>
-</tr>
-<tr>
-<td>-thumb</td>
-<td style="text-align:center">thumbnail</td>
-</tr>
-<tr>
-<td>-img</td>
-<td style="text-align:center">images</td>
-</tr>
-<tr>
-<td>-nav</td>
-<td style="text-align:center">navigation</td>
-</tr>
-<tr>
-<td>-cnt</td>
-<td style="text-align:center">content</td>
-</tr>
-<tr>
-<td>-hd</td>
-<td style="text-align:center">header</td>
-</tr>
-<tr>
-<td>-bd</td>
-<td style="text-align:center">body</td>
-</tr>
-<tr>
-<td>-ft</td>
-<td style="text-align:center">footer</td>
-</tr>
-<tr>
-<td>-txt</td>
-<td style="text-align:center">text</td>
-</tr>
-<tr>
-<td>-btn</td>
-<td style="text-align:center">button</td>
-</tr>
-<tr>
-<td>-multi</td>
-<td style="text-align:center">多个</td>
-</tr>
-<tr>
-<td>-info</td>
-<td style="text-align:center">信息内容</td>
-</tr>
-</tbody>
-</table>
-<h4 id="一些常用的属性或模块："><a href="#一些常用的属性或模块：" class="headerlink" title="一些常用的属性或模块："></a>一些常用的属性或模块：</h4><table>
-<thead>
-<tr>
-<th>单词</th>
-<th style="text-align:center">意思</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-wrap</td>
-<td style="text-align:center">外层</td>
-</tr>
-<tr>
-<td>-default</td>
-<td style="text-align:center">默认样式</td>
-</tr>
-<tr>
-<td>-pure</td>
-<td style="text-align:center">简版</td>
-</tr>
-<tr>
-<td>-stable</td>
-<td style="text-align:center">稳的，用于灰色背景</td>
-</tr>
-<tr>
-<td>-border/-outline</td>
-<td style="text-align:center">带边框的</td>
-</tr>
-<tr>
-<td>-halve</td>
-<td style="text-align:center">两等分</td>
-</tr>
-<tr>
-<td>-trisect</td>
-<td style="text-align:center">三等分</td>
-</tr>
-<tr>
-<td>-cover</td>
-<td style="text-align:center">通栏</td>
-</tr>
-<tr>
-<td>-tiled</td>
-<td style="text-align:center">平铺</td>
-</tr>
-<tr>
-<td>-vertical</td>
-<td style="text-align:center">垂直</td>
-</tr>
-<tr>
-<td>-horizontal</td>
-<td style="text-align:center">横向</td>
-</tr>
-<tr>
-<td>-divider</td>
-<td style="text-align:center">分割</td>
-</tr>
-<tr>
-<td>-muted</td>
-<td style="text-align:center">弱的</td>
-</tr>
-<tr>
-<td>-group</td>
-<td style="text-align:center">组的</td>
-</tr>
-<tr>
-<td>-halve</td>
-<td style="text-align:center">2等分</td>
-</tr>
-<tr>
-<td>-trisect</td>
-<td style="text-align:center">3等分</td>
-</tr>
-<tr>
-<td>-info</td>
-<td style="text-align:center">信息</td>
-</tr>
-<tr>
-<td>-news</td>
-<td style="text-align:center">消息</td>
-</tr>
-<tr>
-<td>-success</td>
-<td style="text-align:center">成功的</td>
-</tr>
-<tr>
-<td>-warn</td>
-<td style="text-align:center">警告的</td>
-</tr>
-<tr>
-<td>-highlight</td>
-<td style="text-align:center">高亮的</td>
-</tr>
-<tr>
-<td>-item</td>
-<td style="text-align:center">子元素</td>
-</tr>
-<tr>
-<td>-title</td>
-<td style="text-align:center">标题</td>
-</tr>
-<tr>
-<td>-subtitle</td>
-<td style="text-align:center">小标题</td>
-</tr>
-<tr>
-<td>-state</td>
-<td style="text-align:center">状态</td>
-</tr>
-<tr>
-<td>-guide</td>
-<td style="text-align:center">引导性</td>
-</tr>
-<tr>
-<td>-link</td>
-<td style="text-align:center">链接</td>
-</tr>
-<tr>
-<td>-bar</td>
-<td style="text-align:center">横块</td>
-</tr>
-</tbody>
-</table>
-<p>只要词义表达了组件要实现的功能或者要表现出来的的外观就可以了。</p>
-<p>例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-tooltips ui-tooltips-warn"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ui-tooltips-cnt ui-tooltips-cnt-link"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>当前网路不可用，请检查你的网路设置。</span><br><span class="line">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="SASS编写"><a href="#SASS编写" class="headerlink" title="SASS编写"></a>SASS编写</h2><p>避免不必要的嵌套。只有在需要给父元素增加样式并且同时存在多个子元素时才需要考虑嵌套。</p>
-<p>字体颜色，字体大小，行高，border颜色，背景颜色等基本属性作为变量，并mixin常用代码段。</p>
-<h2 id="CSS编码规范"><a href="#CSS编码规范" class="headerlink" title="CSS编码规范"></a>CSS编码规范</h2><p>参考<a href="http://alloyteam.github.io/code-guide/#css" target="_blank" rel="external">http://alloyteam.github.io/code-guide/#css</a></p>
+        <p>再来梳理一遍一个基本的Ajax流程：</p>
+<blockquote>
+<p>创建兼容的XHR对象 → 初始化请求 → 发送请求 → 接收数据</p>
+</blockquote>
+<p>我们在封装整个Ajax过程的时候需要知道以下几个内容</p>
+<blockquote>
+<p>传输的方式是<code>GET</code>还是<code>POST</code><br>服务器接收请求的<code>URL</code>是什么<br>需要向服务器传输什么数据<br>接收到服务器返回的数据之后怎么进行回调处理</p>
+</blockquote>
+<p>这些信息我们可以通过参数的形式传递到函数中去，如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method,url,data,success</span>)</span>&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同样，将之前写的创建兼容XHR对象的代码放进去<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function ajax(method,url,data,success)&#123;</span><br><span class="line">	//创建兼容XHR对象</span><br><span class="line">	var xhr = null;</span><br><span class="line">	try&#123;</span><br><span class="line">		xhr = new XMLHttpRequest();</span><br><span class="line">	&#125;catch(e)&#123;</span><br><span class="line">		xhr = new ActiveXObject(&apos;Microsoft.XMLHttp&apos;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后初始化请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(method,url,true);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>GET</code>请求是最常见的请求，最常用语向服务器查询某些信息。必要时可将查询字符串添加到<code>URL</code>的末尾。<br>所以如果<code>method</code>的值是<code>GET</code>的话，我们还需要进行<code>URL</code>处理，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(method == &apos;get&apos;)&#123;</span><br><span class="line">	url += &apos;?&apos; + data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>将发送请求和处理返回请求添加进去我们的函数变成了下面这个样子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method,url,data,success</span>)</span>&#123;</span><br><span class="line">	<span class="comment">//创建兼容XHR对象</span></span><br><span class="line">	<span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">	&#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">		xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHttp'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//处理URL</span></span><br><span class="line">	<span class="keyword">if</span>(method == <span class="string">'get'</span>)&#123;</span><br><span class="line">		url += <span class="string">'?'</span> + data;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//准备发送</span></span><br><span class="line">	xhr.open(method,url,<span class="literal">true</span>);</span><br><span class="line">	<span class="comment">//按不同情况进行发送</span></span><br><span class="line">	<span class="keyword">if</span>(method == <span class="string">'get'</span>)&#123;</span><br><span class="line">		xhr.send(<span class="literal">null</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		xhr.setRequestHeader(<span class="string">'content-type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">		xhr.send(data);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//处理返回信息</span></span><br><span class="line">	xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(xhr.status == <span class="number">4</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(xhr.readyState == <span class="number">200</span> || xhr.readyState == <span class="number">304</span>)&#123;</span><br><span class="line">				success &amp;&amp; success(xhr.responseText);  <span class="comment">//调用回调函数</span></span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				alert(<span class="string">"出错了，出错信息为："</span>+xhr.status);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们在调用这个<code>ajax</code>函数的时候可能会碰到一些问题，比如我们不需要向服务器传输数据的时候，<code>data</code>参数其实就为空，我们在调用的时候需要给一个空的占位符，这样实现既冗余也不美观。我们可以像<code>jQuery</code>一样将所有参数全部写到一个对象里面去，将对象整体作为参数传过去。看看<code>jQuery</code>的调用方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">	url:&apos;01.php&apos;, //请求地址</span><br><span class="line">	type:&apos;GET&apos;, //发送请求方式</span><br><span class="line">	dataType:&apos;json&apos;, //发送数据类型</span><br><span class="line">	data:&apos;name=suliang&amp;age=25&apos;, //发送数据</span><br><span class="line">	async:true, //是否异步</span><br><span class="line">	timeout:5000,  //超时时间</span><br><span class="line">	beforesend:function()&#123;&#125;, //发送请求之前调用</span><br><span class="line">	success:function()&#123;&#125;, //请求成功之后调用</span><br><span class="line">	error:functuon()&#123;&#125;,  //请求错误之后调用</span><br><span class="line">	complate:function()&#123;&#125;  //请求完成之后调用</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>按照这样的调用方式一目了然，我们也可以对参数进行这样的封装，如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">	<span class="comment">//创建兼容XHR对象</span></span><br><span class="line">	<span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">	&#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">		xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHttp'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//处理不发送数据的情况</span></span><br><span class="line">	<span class="keyword">if</span>(!obj.data)&#123;</span><br><span class="line">		obj.data=<span class="string">""</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		obj.data = <span class="string">'?'</span> + obj.data;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//处理URL</span></span><br><span class="line">	<span class="keyword">if</span>(obj.type.toLowerCase()== <span class="string">'get'</span>)&#123;</span><br><span class="line">		obj.url += obj.data + <span class="string">"&amp;"</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();  <span class="comment">//避免缓存</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//准备发送</span></span><br><span class="line">	xhr.open(obj.type,obj.url,<span class="literal">true</span>);</span><br><span class="line">	<span class="comment">//按不同情况进行发送</span></span><br><span class="line">	<span class="keyword">if</span>(obj.type== <span class="string">'get'</span>)&#123;</span><br><span class="line">		xhr.send(<span class="literal">null</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		xhr.setRequestHeader(<span class="string">'content-type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">		xhr.send(obj.data);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//处理返回信息</span></span><br><span class="line">	xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(xhr.status == <span class="number">4</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(xhr.readyState == <span class="number">200</span> || xhr.readyState == <span class="number">304</span>)&#123;</span><br><span class="line">				ob.success &amp;&amp; obj.success(xhr.responseText);  <span class="comment">//调用回调函数</span></span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				alert(<span class="string">"出错了，出错信息为："</span>+xhr.status);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们在调用的时候就可以像<code>jQuery</code>一样传入一个obj对象作为参数了，如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ajax(&#123;</span><br><span class="line">	url:<span class="string">'01.php'</span>,</span><br><span class="line">	type:<span class="string">'GET'</span>,</span><br><span class="line">	data:<span class="string">'name=suliang&amp;age=25'</span>,</span><br><span class="line">	success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(data);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>在我们需要使用<code>GET</code>方式来从服务器获取数据的时候需要按照<code>URL</code>参数的格式进行拼接，如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=suliang&amp;age=<span class="number">25</span></span><br></pre></td></tr></table></figure></p>
+<p>但是在实际使用过程中书写并不是很方便，所以这里我们需要使用<code>object</code>的方式进行参数传递，如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	name:<span class="string">"suliang"</span>,</span><br><span class="line">	age:<span class="number">25</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里我们需要对传进去的对象进行拼接，以便进行数据传递。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(obj.data <span class="keyword">instanceof</span> <span class="built_in">Object</span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> args = <span class="string">"?"</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj.data)&#123;</span><br><span class="line">		args+= i+<span class="string">"="</span>+obj.data[i]+<span class="string">"&amp;"</span>;  </span><br><span class="line">	&#125;</span><br><span class="line">	args = args.slice(<span class="number">0</span>,args.length<span class="number">-1</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	alert(<span class="string">"数据类型不符"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>完整示例如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建兼容性XHR对象</span></span><br><span class="line">	<span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">	&#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">		xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//判断是否传入data属性</span></span><br><span class="line">	<span class="keyword">if</span>(!obj.data)&#123;</span><br><span class="line">		obj.data=<span class="string">""</span>;</span><br><span class="line">	&#125;		</span><br><span class="line"></span><br><span class="line">	<span class="comment">//判断数据类型，拼接数据</span></span><br><span class="line">	<span class="keyword">if</span>(obj.data <span class="keyword">instanceof</span> <span class="built_in">Object</span>)&#123;</span><br><span class="line">		<span class="keyword">var</span> args = <span class="string">"?"</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj.data)&#123;</span><br><span class="line">		    args+= i+<span class="string">"="</span>+<span class="built_in">encodeURI</span>(obj.data[i])+<span class="string">"&amp;"</span>;  </span><br><span class="line">		 &#125;</span><br><span class="line">		 args = args.slice(<span class="number">0</span>,args.length<span class="number">-1</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		 alert(<span class="string">"数据类型不符"</span>);</span><br><span class="line">		 <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(obj.type.toLowerCase()==<span class="string">"get"</span>)&#123;</span><br><span class="line">		obj.url += args + <span class="string">"&amp;"</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();  <span class="comment">//防止缓存</span></span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//准备发送</span></span><br><span class="line">	xhr.open(obj.type,obj.url);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//分情况发送</span></span><br><span class="line">	<span class="keyword">if</span>(obj.type.toLowerCase()==<span class="string">"get"</span>)&#123;</span><br><span class="line">        xhr.send(<span class="literal">null</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	    xhr.setRequestHeader(<span class="string">'content-type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>);</span><br><span class="line">	    xhr.send(args);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//处理接收结果</span></span><br><span class="line">	xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">	    	<span class="keyword">if</span>(xhr.status == <span class="number">200</span> || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">	    		obj.success &amp;&amp; obj.success(xhr.responseText);</span><br><span class="line">	    	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	    		<span class="built_in">console</span>.log(<span class="string">"错误"</span>);</span><br><span class="line">	    	&#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">"button"</span>);</span><br><span class="line"><span class="keyword">var</span> box = <span class="built_in">document</span>.getElementById(<span class="string">"box"</span>);</span><br><span class="line">button.addEventListener(<span class="string">"click"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	ajax(&#123;</span><br><span class="line">		type:<span class="string">'get'</span>,</span><br><span class="line">		url:<span class="string">'01.php'</span>,</span><br><span class="line">		data:&#123;name:<span class="string">'苏亮'</span>,age:<span class="number">25</span>&#125;,</span><br><span class="line">		success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">			box.innerHTML = data;</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>服务器端代码如下：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$name = $_GET[<span class="string">'name'</span>];</span><br><span class="line">	$age =  $_GET[<span class="string">'age'</span>];</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'我的名字是'</span>.$name.<span class="string">',年龄'</span>.$age.<span class="string">'岁'</span>;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -662,7 +403,7 @@ vip（业务组件）
       
         <div class="post-tags">
           
-            <a href="/tags/CSS规范/" rel="tag">#CSS规范</a>
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
           
         </div>
       
@@ -675,8 +416,8 @@ vip（业务组件）
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/05/25/JSON/" rel="prev" title="JSON">
-                JSON <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/25/JSON/" rel="prev" title="AngularJs中的模块化">
+                AngularJs中的模块化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -727,7 +468,7 @@ vip（业务组件）
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/05/24/hello-world/"
-           data-title="CSS规范" data-url="http://latte-time.com/2016/05/24/hello-world/">
+           data-title="封装Ajax函数" data-url="http://latte-time.com/2016/05/24/hello-world/">
       </div>
     
   </div>
@@ -772,7 +513,7 @@ vip（业务组件）
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -849,7 +590,7 @@ vip（业务组件）
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组织规范"><span class="nav-number">1.</span> <span class="nav-text">组织规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命名规范"><span class="nav-number">2.</span> <span class="nav-text">命名规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#状态类："><span class="nav-number">2.0.1.</span> <span class="nav-text">状态类：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#约定的一些简写："><span class="nav-number">2.0.2.</span> <span class="nav-text">约定的一些简写：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些常用的属性或模块："><span class="nav-number">2.0.3.</span> <span class="nav-text">一些常用的属性或模块：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SASS编写"><span class="nav-number">3.</span> <span class="nav-text">SASS编写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS编码规范"><span class="nav-number">4.</span> <span class="nav-text">CSS编码规范</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
