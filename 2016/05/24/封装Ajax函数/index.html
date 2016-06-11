@@ -116,7 +116,7 @@
 
 传输的方式是GET还是POST服务器接收请求的URL是什么需要向服务器传输什么数据接收到服务器返回的数据之后怎么进行回调处理
 
-这些信息我们可以通过参数的形式传递到函数中去，如下所示：123function ajax(method,ur">
+这些信息我们可以通过参数的形式传递到函数中去，如下所示：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="封装Ajax函数">
 <meta property="og:url" content="http://latte-time.com/2016/05/24/封装Ajax函数/index.html">
@@ -129,8 +129,8 @@
 
 传输的方式是GET还是POST服务器接收请求的URL是什么需要向服务器传输什么数据接收到服务器返回的数据之后怎么进行回调处理
 
-这些信息我们可以通过参数的形式传递到函数中去，如下所示：123function ajax(method,ur">
-<meta property="og:updated_time" content="2016-06-11T14:42:21.404Z">
+这些信息我们可以通过参数的形式传递到函数中去，如下所示：">
+<meta property="og:updated_time" content="2016-06-11T14:56:37.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="封装Ajax函数">
 <meta name="twitter:description" content="再来梳理一遍一个基本的Ajax流程：
@@ -141,7 +141,7 @@
 
 传输的方式是GET还是POST服务器接收请求的URL是什么需要向服务器传输什么数据接收到服务器返回的数据之后怎么进行回调处理
 
-这些信息我们可以通过参数的形式传递到函数中去，如下所示：123function ajax(method,ur">
+这些信息我们可以通过参数的形式传递到函数中去，如下所示：">
 
 
 
@@ -367,7 +367,7 @@
 <blockquote>
 <p>传输的方式是<code>GET</code>还是<code>POST</code><br>服务器接收请求的<code>URL</code>是什么<br>需要向服务器传输什么数据<br>接收到服务器返回的数据之后怎么进行回调处理</p>
 </blockquote>
-<p>这些信息我们可以通过参数的形式传递到函数中去，如下所示：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method,url,data,success</span>)</span>&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这些信息我们可以通过参数的形式传递到函数中去，如下所示：<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method,url,data,success</span>)</span>&#123;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>同样，将之前写的创建兼容XHR对象的代码放进去<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">method,url,data,success</span>)</span>&#123;</span><br><span class="line">	<span class="comment">//创建兼容XHR对象</span></span><br><span class="line">	<span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">	&#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">		xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHttp'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后初始化请求<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(method,url,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure></p>
 <blockquote>
